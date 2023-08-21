@@ -12,7 +12,7 @@ name
 FROM 
 animals
  WHERE
- date_of_birth BETWEEN 2016 AND 2019;
+ date_of_birth BETWEEN '2016-01-01' AND '2019-12-31';
 
  SELECT
  name
@@ -48,7 +48,7 @@ animals
  FROM
  animals
  WHERE
- name <> Gabumon;
+ name <> 'Gabumon';
 
  SELECT
  *

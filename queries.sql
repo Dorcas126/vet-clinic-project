@@ -83,7 +83,7 @@ SELECT * FROM animals;
 DELETE FROM animals;
 
 -- Roll back the transaction
-RsOLLBACK;
+ROLLBACK;
 
 -- Verify if all records in the animals table still exist
 -- Run a SELECT query to check the records

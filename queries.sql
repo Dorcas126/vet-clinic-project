@@ -122,9 +122,9 @@ FROM animals
 WHERE escape_attempts = 0;
 
 SELECT
-    AVG(weight_kg) AS average_weight
+AVG(weight_kg) AS average_weight
 FROM
-    animals;
+animals;
 
 SELECT neutered, SUM(escape_attempts) AS total_escapes
 FROM animals

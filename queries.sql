@@ -57,6 +57,23 @@ animals
  WHERE 
  weight_kg >=10.4 AND weight_kg <=17.3;
 
+ -- Begin Transaction
+BEGIN;
+
+-- Update the Animals Table
+UPDATE animals
+SET species = 'unspecified';
+
+-- Verify the Change
+SELECT * FROM animals;
+
+-- Rollback the Transaction 
+ROLLBACK;
+
+-- Verify Rollback
+SELECT * FROM animals;
+
+
 -- Update animals with names ending in 'mon'
 UPDATE 
 animals

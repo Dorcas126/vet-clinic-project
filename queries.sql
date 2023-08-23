@@ -158,3 +158,65 @@ FROM animals
 WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
 GROUP BY species;
 
+UPDATE animals
+SET species_id = 2
+WHERE name LIKE '%mon';
+
+UPDATE animals
+SET species_id = 1
+WHERE name NOT LIKE '%mon';
+
+UPDATE animals
+SET owner_id = 
+    (SELECT id FROM owners WHERE full_name = 'Sam Smith')
+    WHERE name IN ('Agumon');
+
+UPDATE animals
+SET owner_id = 
+    (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')
+    WHERE name IN ('Gabumon', 'Pikachu');
+
+UPDATE animals
+SET owner_id = 
+    (SELECT id FROM owners WHERE full_name = 'Bob')
+    WHERE name IN ('Devimon', 'Plantmon');
+
+UPDATE animals
+SET owner_id = 
+    (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
+    WHERE name IN ('Angemon', 'Boarmon'); 
+
+
+SELECT name FROM animals A
+INNER JOIN owners O
+ON A.owner_id = O.id
+WHERE O.full_name = 'Melody Pond';
+
+SELECT A.name FROM animals A
+INNER JOIN species S
+ON A.species_id = S.id
+WHERE S.name = 'Pokemon';
+
+SELECT full_name, name FROM owners O
+LEFT JOIN animals A
+ON A.owner_id = O.id;
+
+
+SELECT COUNT(*), S.name FROM animals A
+INNER JOIN species S
+ON A.species_id = S.id
+GROUP BY S.name;
+
+SELECT A.name FROM animals A
+INNER JOIN species S ON A.species_id = S.id
+INNER JOIN owners O ON A.owner_id = O.id
+WHERE O.full_name = 'Jennifer Orwell' AND S.name = 'Digimon';
+
+SELECT name FROM animals A
+INNER JOIN owners O ON A.owner_id = O.id
+WHERE O.full_name = 'Dean Winchester' AND escape_attempts = 0;
+
+SELECT COUNT(*) as count, full_name FROM animals A
+INNER JOIN owners O ON A.owner_id = O.id
+GROUP BY O.full_name
+ORDER BY count DESC;

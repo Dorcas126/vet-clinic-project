@@ -158,34 +158,6 @@ FROM animals
 WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31'
 GROUP BY species;
 
-UPDATE animals
-SET species_id = 2
-WHERE name LIKE '%mon';
-
-UPDATE animals
-SET species_id = 1
-WHERE name NOT LIKE '%mon';
-
-UPDATE animals
-SET owner_id = 
-    (SELECT id FROM owners WHERE full_name = 'Sam Smith')
-    WHERE name IN ('Agumon');
-
-UPDATE animals
-SET owner_id = 
-    (SELECT id FROM owners WHERE full_name = 'Jennifer Orwell')
-    WHERE name IN ('Gabumon', 'Pikachu');
-
-UPDATE animals
-SET owner_id = 
-    (SELECT id FROM owners WHERE full_name = 'Bob')
-    WHERE name IN ('Devimon', 'Plantmon');
-
-UPDATE animals
-SET owner_id = 
-    (SELECT id FROM owners WHERE full_name = 'Dean Winchester')
-    WHERE name IN ('Angemon', 'Boarmon'); 
-
 
 SELECT name FROM animals A
 INNER JOIN owners O
